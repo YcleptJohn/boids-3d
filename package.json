@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo 'tbc'"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YcleptJohn/boids-3d.git"
@@ -15,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/YcleptJohn/boids-3d/issues"
   },
-  "homepage": "https://github.com/YcleptJohn/boids-3d#readme"
+  "homepage": "https://github.com/YcleptJohn/boids-3d#readme",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
