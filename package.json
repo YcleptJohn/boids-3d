@@ -1,0 +1,19 @@
+{
+  "name": "boids-3d",
+  "version": "1.0.0",
+  "description": "A simulation of the boids algorithm in 3d",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'tbc'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YcleptJohn/boids-3d.git"
+  },
+  "author": "github.com/YcleptJohn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YcleptJohn/boids-3d/issues"
+  },
+  "homepage": "https://github.com/YcleptJohn/boids-3d#readme"
+}
