@@ -10,8 +10,7 @@ const {
 start()
 
 function start () {
-  console.log(birds.createMany(5))
-  birds.createMany(5).forEach(b => scene.add(b.obj3D))
+  birds.createMany(500).forEach(b => scene.add(b.obj3D))
 
   var gridHelper = new THREE.GridHelper(10, 10, 0xFFFFFF, 0xFFFFFF)
   scene.add(gridHelper)
