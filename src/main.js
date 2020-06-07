@@ -23,6 +23,10 @@ function start () {
   anim()
 }
 
+window.onclick = () => {
+  scene.add(birds.create().obj3D)
+}
+
 function anim () {
   requestAnimationFrame(anim)
   renderer.render(scene, camera)

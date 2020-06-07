@@ -4,9 +4,9 @@ const birds = {}
 
 birds.randomPosition = () => {
   return {
-    x: Math.floor(Math.random() * 5 + 1),
-    y: Math.floor(Math.random() * 5 + 1),
-    z: Math.floor(Math.random() * 5 + 1)
+    x: Math.random() * 10 - 5,
+    y: Math.random() * 10 - 5,
+    z: Math.random() * 10 - 5
   }
 }
 
