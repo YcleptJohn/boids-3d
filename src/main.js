@@ -1,39 +1,29 @@
 import * as THREE from 'three'
 
+import sceneCreator from './sceneCreator.js'
+import birds from './birds.js'
 
-let scene, cam, cube, renderer
+const {
+  scene, camera, renderer
+} = sceneCreator.create({ enableOrbitControls: true })
 
-init()
-anim()
+start()
 
-function init() {
-  scene = new THREE.Scene()
-  cam = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-  renderer = new THREE.WebGLRenderer()
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  document.body.appendChild(renderer.domElement)
-  var controls = new OrbitControls(cam, renderer.domElement)
-
-  var geometry = new THREE.BoxGeometry()
-  var material = new THREE.MeshPhongMaterial({ color: 0x44aa88 })
-  cube = new THREE.Mesh( geometry, material )
-  scene.add(cube)
-
-  cam.position.z = 5;
-  controls.update()
+function start () {
+  console.log(birds.createMany(5))
+  birds.createMany(5).forEach(b => scene.add(b.obj3D))
 
   var gridHelper = new THREE.GridHelper(10, 10, 0xFFFFFF, 0xFFFFFF)
   scene.add(gridHelper)
 
   var light = new THREE.DirectionalLight(0xFFFFFF, 1)
-  light.position.set(-1, 2, 4);
+  light.position.set(-1, 2, 4)
   scene.add(light)
 
+  anim()
 }
 
-function anim() {
+function anim () {
   requestAnimationFrame(anim)
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-  renderer.render(scene, cam)
+  renderer.render(scene, camera)
 }
