@@ -15,7 +15,7 @@ birds.randomColour = () => {
 }
 
 birds.create = () => {
-  const geo = new THREE.ConeGeometry(0.2, 0.4, 10)
+  const geo = new THREE.SphereGeometry(0.2, 20, 20)
   const mat = new THREE.MeshBasicMaterial({ color: birds.randomColour() })
   const birdObject = new THREE.Mesh(geo, mat)
   // const pos = birds.randomPosition()
