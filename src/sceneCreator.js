@@ -11,8 +11,15 @@ sceneCreator.create = (options) => {
   document.body.appendChild(renderer.domElement)
   if (options.enableOrbitControls) controls = new OrbitControls(camera, renderer.domElement)
 
-  camera.position.z = 5
+  camera.position.z = 6
+  camera.position.y = 3
   if (controls) controls.update()
+
+  var gridHelper = new THREE.GridHelper(10, 10, 0xFFFFFF, 0xFFFFFF)
+  scene.add(gridHelper)
+
+  var axesHelper = new THREE.AxesHelper(5)
+  scene.add(axesHelper)
 
   return {
     scene, camera, renderer, controls

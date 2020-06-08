@@ -15,15 +15,16 @@ birds.randomColour = () => {
 }
 
 birds.create = () => {
-  const geo = new THREE.BoxGeometry()
+  const geo = new THREE.ConeGeometry(0.2, 0.4, 10)
   const mat = new THREE.MeshBasicMaterial({ color: birds.randomColour() })
   const birdObject = new THREE.Mesh(geo, mat)
-  const pos = birds.randomPosition()
-  birdObject.position.x = pos.x
-  birdObject.position.y = pos.y
-  birdObject.position.z = pos.z
+  // const pos = birds.randomPosition()
+  birdObject.position.x = 0
+  birdObject.position.y = 0.2
+  birdObject.position.z = 0
   return {
-    obj3D: birdObject
+    obj3D: birdObject,
+    direction: null
   }
 }
 
