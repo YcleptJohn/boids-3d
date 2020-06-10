@@ -28,6 +28,7 @@ window.onkeypress = (x) => {
     birdies.forEach(b => {
       b.obj3D.position.x = 0
       b.obj3D.position.y = 0
+      b.obj3D.position.z = 0
     })
   }
 }
@@ -35,8 +36,21 @@ window.onkeypress = (x) => {
 function anim () {
   requestAnimationFrame(anim)
   birdies.forEach(b => {
-    const ps = (new Array(3)).fill(null).map(v => (Math.random() * 100) - 50)
-    b.obj3D.translateOnAxis(new THREE.Vector3(ps[0], ps[1], ps[3]), 0.01)
+    if (!b.destination || Math.random() > 0.95) {
+      const ps = (new Array(3)).fill(null).map(v => (Math.random() * 100) - 50)
+      b.destination = new THREE.Vector3(ps[0], ps[1], ps[3])
+    }
+    if (Math.random() > 0.8) {
+      const m = (new Array(3)).fill(null).map(v => (Math.random() * 20) - 10)
+      b.destination = (new THREE.Vector3()).subVectors(b.destination, new THREE.Vector3(m[0], m[1], m[2]))
+    }
+    b.obj3D.translateOnAxis(b.destination, 0.001)
+
+    const origin = new THREE.Vector3(0, 0, 0)
+    if (b.obj3D.position.distanceTo(origin) > 5) b.destination = origin
+
+    // const ps = (new Array(3)).fill(null).map(v => (Math.random() * 100) - 50)
+    // b.obj3D.translateOnAxis(new THREE.Vector3(ps[0], ps[1], ps[3]), 0.01)
   })
   renderer.render(scene, camera)
 }
