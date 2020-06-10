@@ -24,13 +24,6 @@ function start () {
 }
 
 window.onkeypress = (x) => {
-  if (x.key === 'q') birdies[0].direction = 'up'
-  if (x.key === 'e') birdies[0].direction = 'down'
-  if (x.key === 'w') birdies[0].direction = 'north'
-  if (x.key === 's') birdies[0].direction = 'south'
-  if (x.key === 'd') birdies[0].direction = 'east'
-  if (x.key === 'a') birdies[0].direction = 'west'
-  if (x.key === 'c') birdies[0].direction = null
   if (x.key === 'r') {
     birdies.forEach(b => {
       b.obj3D.position.x = 0
@@ -43,7 +36,6 @@ function anim () {
   requestAnimationFrame(anim)
   birdies.forEach(b => {
     const ps = (new Array(3)).fill(null).map(v => (Math.random() * 100) - 50)
-    console.log(ps)
     b.obj3D.translateOnAxis(new THREE.Vector3(ps[0], ps[1], ps[3]), 0.01)
   })
   renderer.render(scene, camera)
