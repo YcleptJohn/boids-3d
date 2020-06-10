@@ -31,27 +31,20 @@ window.onkeypress = (x) => {
   if (x.key === 'd') birdies[0].direction = 'east'
   if (x.key === 'a') birdies[0].direction = 'west'
   if (x.key === 'c') birdies[0].direction = null
+  if (x.key === 'r') {
+    birdies.forEach(b => {
+      b.obj3D.position.x = 0
+      b.obj3D.position.y = 0
+    })
+  }
 }
-
-// window.onclick = () => {
-//   scene.add(birds.create().obj3D)
-// }
 
 function anim () {
   requestAnimationFrame(anim)
-  // birdies[0].obj3D.position.x += 0.01]
-  // const b = birdies[0].obj3D
-  // b.position.x = b.position.x + (Math.cos(165) * 0.01)
-  // b.position.y = b.position.y + (Math.sin(165) * 0.01)
   birdies.forEach(b => {
-    if (b.direction) {
-      if (b.direction === 'east') b.obj3D.position.x += 0.01
-      if (b.direction === 'west') b.obj3D.position.x -= 0.01
-      if (b.direction === 'north') b.obj3D.position.z += 0.01
-      if (b.direction === 'south') b.obj3D.position.z -= 0.01
-      if (b.direction === 'up') b.obj3D.position.y += 0.01
-      if (b.direction === 'down') b.obj3D.position.y -= 0.01
-    }
+    const ps = (new Array(3)).fill(null).map(v => (Math.random() * 100) - 50)
+    console.log(ps)
+    b.obj3D.translateOnAxis(new THREE.Vector3(ps[0], ps[1], ps[3]), 0.01)
   })
   renderer.render(scene, camera)
 }
