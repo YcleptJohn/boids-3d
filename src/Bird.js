@@ -34,9 +34,10 @@ class Bird {
       this.destination = (new THREE.Vector3()).subVectors(this.destination, new THREE.Vector3(m[0], m[1], m[2]))
     }
 
-    // Attempt at correcting boundary flights but needs work
     const origin = new THREE.Vector3(0, 0, 0)
-    if (this.obj.position.distanceTo(origin) > 5) this.destination = origin
+    if (this.obj.position.distanceTo(origin) > 5) {
+      this.destination = (new THREE.Vector3()).subVectors(origin, this.destination)
+    }
   }
 
   doFlyTick () {
