@@ -7,11 +7,11 @@ const {
   scene, camera, renderer
 } = sceneCreator.create({ enableOrbitControls: true })
 
-const birdies = []
+let birdies = (new Array(1)).fill(null)
 
 start()
 function start () {
-  birdies.push(new Bird(scene))
+  birdies = birdies.map(x => new Bird(scene))
 
   var light = new THREE.DirectionalLight(0xFFFFFF, 1)
   light.position.set(-1, 2, 4)
@@ -28,12 +28,18 @@ window.onkeypress = (x) => {
       b.obj.position.z = 0
     })
   }
+  if (x.key === 'x') {
+    birdies.forEach(b => {
+      b.setRandomPos()
+    })
+  }
 }
 
 function anim () {
   requestAnimationFrame(anim)
   birdies.forEach(b => {
     b.doFlyTick()
+    // b.originLook()
   })
   renderer.render(scene, camera)
 }
